@@ -42,9 +42,9 @@ it's not discussed here.
 
 We first look at how to swap values in two registers:
 
-- the [`temp` algorithm](./r_temp.S): $2.76$s
-- the [plus-minus algorithm](./r_pm.S): $12.18$s
-- the [XOR algorithm](./r_xor.S): $8.12$s
+- the [`temp` algorithm](./r_temp.S): $2.76$ s
+- the [plus-minus algorithm](./r_pm.S): $12.18$ s
+- the [XOR algorithm](./r_xor.S): $8.12$ s
 
 For each algorithm, the swapping is performed for $10,000,000,000$ times.
 
@@ -62,15 +62,15 @@ How about swapping a register value and a memory value?
 ## `Temp`
 
 For [the `temp` algorithm](./rm_temp.S), everything would be fine if it just
-stays the same; it takes $0.98$s.
+stays the same; it takes $0.98$ s.
 
 ## XOR
 
-[XOR-ing](./rm_xor.S) would take $2.48$s, which is longer.
+[XOR-ing](./rm_xor.S) would take $2.48$ s, which is longer.
 
 I thought first of all loading the memory into a temporary register would
 reduce the time taken, which is tested [here](./rm_xor_temp.S), but it
-wouldn't; it takes $2.51$s.
+wouldn't; it takes $2.51$ s.
 
 Also, note that we are sure this method is going to be slower than the `temp`
 one.
@@ -161,7 +161,7 @@ If you still have all the registers occupied, but you want to swap a register
 and a memory location, XOR-ing would be a reasonable choice, since it would
 stays the same, while `temp` requires two extra memory access.
 
-Let's do some benchmark now. [`temp`](./noreg_rm_temp.S): $1.91$s.  Okay, I'm
+Let's do some benchmark now. [`temp`](./noreg_rm_temp.S): $1.91$ s.  Okay, I'm
 wrong, `temp` is still the best option.
 
 ## How to Choose From the Algorithms
